@@ -48,7 +48,7 @@ if (!empty($messages)) {
       </select>
       <br>
       <!-- Sex -->
-      <label>Пол</label><br>
+      <label>Sex</label><br>
       <label>
           <input type="radio" name="sex" value="male" <?php if ($values['sex'] == 'male') print("checked"); ?> >
            Male
@@ -59,7 +59,7 @@ if (!empty($messages)) {
       </label>
       <br>
       <!-- Limbs -->
-      <label>Пол</label><br>
+      <label>Limbs count</label><br>
       <label>
           <input type="radio" name="limbs" value="2" <?php if ($values['limbs'] == 2) print("checked"); ?> >
            2
@@ -72,6 +72,24 @@ if (!empty($messages)) {
           <input type="radio" name="limbs" value="8" <?php if ($values['limbs'] == 8) print("checked"); ?> >
            8
       </label>
+      <br>
+      <!-- Powers -->
+      <label for="powersSelect">Powers</label><br>
+      <select id="powersSelect" <?php if ($errors['powers']) {print 'class="error"';} ?> name="powers[]" multiple size="4">
+         <?php
+            foreach ($powers as $key => $value) {
+                $selected = empty($values['powers'][$key]) ? '' : ' selected="selected" ';
+                printf('<option value="%s",%s>%s</option>', $key, $selected, $value);
+            }
+         ?>
+      </select>
+      <br>
+      <!-- Bio -->
+      <label for="bioArea">Bio</label><br>
+      <textarea id="bioArea" name="bio" rows="8" cols="30" placeholder="Write somthing about you..." <?php if ($errors['bio']) {print 'class="error"';} ?>><?php print $values['bio']; ?></textarea>
+      <br>
+      <!-- Check -->
+      <label <?php if ($errors['check']) {print 'class="error"';} ?>><input type="checkbox" name="check" value="ok"> I Agree with Terms</label>
       <br>
       <!-- Button -->
       <input type="submit" value="Send" />
