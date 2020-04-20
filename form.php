@@ -91,7 +91,7 @@
 
       <!-- Биография -->
       <label for="bioArea">Биография</label>
-      <textarea id="bioArea" name="bio" rows="8" cols="30" placeholder="Write somthing about you..." <?php if ($errors['bio']) {print 'class="error"';} ?>><?php print $values['bio']; ?></textarea>
+      <textarea id="bioArea" name="bio" rows="8" cols="30" placeholder="Напишите что-нибудь о себе..." <?php if ($errors['bio']) {print 'class="error"';} ?>><?php print $values['bio']; ?></textarea>
 
       <!-- Чекбокс -->
       <label <?php if ($errors['check']) {print 'class="error"';} ?>><input type="checkbox" name="check" value="ok"> С контрактом ознакомлен(а)</label>

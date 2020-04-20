@@ -21,11 +21,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   }
   // Если кука notsave не пустая (эта кука для проверки ошибки отправки в базу).
   if (!empty($_COOKIE['notsave'])) {
+      // Удаляем эту куку
     setcookie('notsave', '', 100000);
+    // записываем сообщение об ошибке отправки
     $messages[] = 'Ошибка отправления в базу данных.';
   }
 
+  // Создаем массив ошибок
   $errors = array();
+  // Ошибка имени, если пустая то записываем пустую строку, иначе ее значение из куки
+  // Аналогично со всеми остальными
   $errors['name'] = empty($_COOKIE['name_error']) ? '' : $_COOKIE['name_error'];
   $errors['email'] = !empty($_COOKIE['email_error']);
   $errors['powers'] = !empty($_COOKIE['powers_error']);
@@ -77,7 +82,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET') {
   $values['sex'] = empty($_COOKIE['sex_value']) ? 'male' : $_COOKIE['sex_value'];
   $values['limbs'] = empty($_COOKIE['limbs_value']) ? '4' : $_COOKIE['limbs_value'];
   $values['bio'] = empty($_COOKIE['bio_value']) ? '' : $_COOKIE['bio_value'];
-  // pizdec
+  
   if (!empty($_COOKIE['powers_value'])) {
       $powers_value = json_decode($_COOKIE['powers_value']);
   }
